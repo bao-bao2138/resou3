@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN" class=""><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热点监控看板</title>
+    <link rel="stylesheet" href="/styles.css">
+  <style id="trae-panel-enter-style">
+        @keyframes trae-panel-enter {
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
+        }
+      </style></head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">实时监控</p>
+          <h1>抖音 / 微博 / 小红书 热点榜单</h1>
+          <p class="hero-text">
+            聚合同步抖音多榜单、微博热搜和小红书热榜，并保留近 15 日上榜记录用于搜索。
+          </p>
+        </div>
+        <div class="hero-actions">
+          <label class="field compact">
+            <span>抖音同城榜</span>
+            <select id="citySelect"></select>
+          </label>
+          <button id="refreshButton" class="primary-button">立即刷新</button>
+        </div>
+      </header>
+
+      <section class="status-grid">
+        <article class="status-card">
+          <span class="label">最后更新</span>
+          <strong id="lastUpdated">读取中...</strong>
+          <small>前端每分钟自动轮询，后端按周期刷新并落盘。</small>
+        </article>
+        <article class="status-card">
+          <span class="label">历史留存</span>
+          <strong>15 日</strong>
+          <small id="historySince">首次运行后开始积累历史。</small>
+        </article>
+        <article class="status-card">
+          <span class="label">当前城市</span>
+          <strong id="currentCity">上海</strong>
+          <small>用于抖音同城榜拉取与归档。</small>
+        </article>
+      </section>
+
+      <section class="search-panel">
+        <div class="search-head">
+          <div>
+            <h2>近 15 日上榜搜索</h2>
+            <p>输入关键词后，可检索近 15 日内在已采集榜单中出现过的热点词。</p>
+          </div>
+        </div>
+        <form id="searchForm" class="search-form">
+          <input id="searchInput" type="search" placeholder="例如：台风、七夕、百花奖">
+          <button class="primary-button" type="submit">搜索热点词</button>
+        </form>
+        <div id="searchSummary" class="search-summary">输入关键词即可查询。</div>
+        <div id="searchResults" class="search-results empty">暂无搜索结果</div>
+      </section>
+
+      <section class="boards-section">
+        <div class="section-head">
+          <h2>实时榜单</h2>
+          <p>当前页面默认展示抖音五个榜单，以及微博、小红书实时热点。</p>
+        </div>
+        <div id="boardsGrid" class="boards-grid"></div>
+      </section>
+    </div>
+
+    <template id="boardTemplate">
+      <article class="board-card">
+        <div class="board-header">
+          <div>
+            <p class="board-platform"></p>
+            <h3 class="board-title"></h3>
+          </div>
+          <div class="board-meta"></div>
+        </div>
+        <div class="board-updated"></div>
+        <div class="board-table"></div>
+      </article>
+    </template>
+
+    <template id="searchItemTemplate">
+      <article class="search-card">
+        <div class="search-card-head">
+          <div>
+            <h3 class="search-title"></h3>
+            <div class="tag-row"></div>
+          </div>
+          <a class="search-link" target="_blank" rel="noreferrer">打开原链接</a>
+        </div>
+        <div class="search-metrics"></div>
+        <div class="timeline"></div>
+      </article>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
